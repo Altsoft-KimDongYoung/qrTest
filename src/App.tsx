@@ -16,7 +16,7 @@ function App() {
     const qrCodeSuccessCallback = (decodedText: any, decodedResult: any) => {
       /* handle success */
     };
-    const config = { fps: 10 };
+    const config = { fps: 10, qrbox: 236 };
 
     // If you want to prefer front camera
     scannerRef.current.start(
