@@ -14,7 +14,7 @@ function App() {
     const qrCodeSuccessCallback = (decodedText: any, decodedResult: any) => {
       /* handle success */
     };
-    const config = { fps: 10, qrbox: { width: 100, height: 250 } };
+    const config = { fps: 10, qrbox: { width: 300, height: 300 } };
 
     // If you want to prefer front camera
     scannerRef.current.start(
@@ -29,7 +29,15 @@ function App() {
     };
   }, [windowSize]);
 
-  return <div id="reader"></div>;
+  return (
+    <div
+      id="reader"
+      style={{
+        width: "100dvw",
+        height: "100dvh",
+      }}
+    />
+  );
 }
 
 export default App;
