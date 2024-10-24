@@ -18,10 +18,9 @@ function App() {
     };
     const config = {
       fps: 20,
-      qrbox: (viewfinderWidth: any, viewfinderHeight: any) => {
-        // 중앙에 위치할 스캔 영역 크기 설정
-        const boxSize = Math.min(viewfinderWidth, viewfinderHeight) * 0.5;
-        return { width: boxSize, height: boxSize };
+      qrbox: {
+        width: 200,
+        height: 200,
       },
     };
 
@@ -39,13 +38,9 @@ function App() {
   }, [windowSize]);
 
   return (
-    <div
-      id="reader"
-      style={{
-        width: "100dvw",
-        height: "100dvh",
-      }}
-    />
+    <div className="test">
+      <div id="reader" style={{ width: "100%" }} />
+    </div>
   );
 }
 
