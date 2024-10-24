@@ -18,7 +18,7 @@ function App() {
     };
     const config = {
       fps: 20,
-      qrbox: (viewfinderWidth, viewfinderHeight) => {
+      qrbox: (viewfinderWidth: any, viewfinderHeight: any) => {
         // 중앙에 위치할 스캔 영역 크기 설정
         const boxSize = Math.min(viewfinderWidth, viewfinderHeight) * 0.5;
         return { width: boxSize, height: boxSize };
