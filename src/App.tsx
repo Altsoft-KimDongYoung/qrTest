@@ -5,37 +5,37 @@ function App() {
   const scannerRef = useRef<Html5QrcodeScanner | null>(null);
   const [test, setTest] = useState(true);
 
-  useEffect(() => {
-    const checkCameraPermission = async () => {
-      try {
-        // TypeScript에서는 'camera'를 PermissionDescriptor로 명시적으로 변환
-        const permissionStatus = await navigator.permissions.query({
-          name: "camera" as PermissionDescriptor["name"],
-        });
+  // useEffect(() => {
+  //   const checkCameraPermission = async () => {
+  //     try {
+  //       // TypeScript에서는 'camera'를 PermissionDescriptor로 명시적으로 변환
+  //       const permissionStatus = await navigator.permissions.query({
+  //         name: "camera" as PermissionDescriptor["name"],
+  //       });
 
-        console.log("permissionStatus", permissionStatus);
-        // 권한 상태가 변경될 때마다 업데이트
-        permissionStatus.onchange = () => {
-          console.log(
-            "permissionStacdajdajdajdlkajdakjdkajdadjtus",
-            permissionStatus
-          );
+  //       console.log("permissionStatus", permissionStatus);
+  //       // 권한 상태가 변경될 때마다 업데이트
+  //       permissionStatus.onchange = () => {
+  //         console.log(
+  //           "permissionStacdajdajdajdlkajdakjdkajdadjtus",
+  //           permissionStatus
+  //         );
 
-          setTimeout(() => {
-            const cameraStartButton = document.getElementById(
-              "html5-qrcode-button-camera-start"
-            );
-            console.log("cameraStartButton", cameraStartButton);
-            cameraStartButton?.click();
-          }, 3000);
-        };
-      } catch (error) {
-        console.error("권한 상태를 확인하는 데 오류가 발생했습니다:", error);
-      }
-    };
+  //         setTimeout(() => {
+  //           const cameraStartButton = document.getElementById(
+  //             "html5-qrcode-button-camera-start"
+  //           );
+  //           console.log("cameraStartButton", cameraStartButton);
+  //           cameraStartButton?.click();
+  //         }, 3000);
+  //       };
+  //     } catch (error) {
+  //       console.error("권한 상태를 확인하는 데 오류가 발생했습니다:", error);
+  //     }
+  //   };
 
-    checkCameraPermission();
-  }, []);
+  //   checkCameraPermission();
+  // }, []);
 
   function checkMediaPermissions() {
     navigator.mediaDevices
@@ -44,13 +44,13 @@ function App() {
         console.log("Camera and microphone access granted");
         // 권한이 허용되었으면 주기적으로 권한을 요청하는 것을 멈추거나 필요한 작업을 합니다.
         clearInterval(permissionInterval); // 주기적인 요청을 멈춥니다.
-        // setTimeout(() => {
-        //   const cameraStartButton = document.getElementById(
-        //     "html5-qrcode-button-camera-start"
-        //   );
-        //   console.log("cameraStartButton", cameraStartButton);
-        //   cameraStartButton?.click();
-        // }, 3000);
+        setTimeout(() => {
+          const cameraStartButton = document.getElementById(
+            "html5-qrcode-button-camera-start"
+          );
+          console.log("cameraStartButton", cameraStartButton);
+          cameraStartButton?.click();
+        }, 3000);
         // 스트림 사용
       })
       .catch((error) => {
@@ -65,28 +65,28 @@ function App() {
   // 5초(5000ms) 간격으로 권한을 요청
   const permissionInterval = setInterval(checkMediaPermissions, 5000);
 
-  async function checkPermission() {
-    try {
-      const permissionStatus = await navigator.permissions.query({
-        name: "camera" as PermissionDescriptor["name"],
-      });
+  // async function checkPermission() {
+  //   try {
+  //     const permissionStatus = await navigator.permissions.query({
+  //       name: "camera" as PermissionDescriptor["name"],
+  //     });
 
-      const handlePermissionChange = () => {
-        console.log("Permission changed:", permissionStatus.state);
-      };
+  //     const handlePermissionChange = () => {
+  //       console.log("Permission changed:", permissionStatus.state);
+  //     };
 
-      // 수동으로 상태를 주기적으로 체크하는 방식 (폴링)
-      setInterval(() => {
-        handlePermissionChange();
-      }, 3000); // 1초마다 권한 상태 확인
-    } catch (error) {
-      console.error("Permissions API is not supported in this browser.");
-    }
-  }
+  //     // 수동으로 상태를 주기적으로 체크하는 방식 (폴링)
+  //     setInterval(() => {
+  //       handlePermissionChange();
+  //     }, 3000); // 1초마다 권한 상태 확인
+  //   } catch (error) {
+  //     console.error("Permissions API is not supported in this browser.");
+  //   }
+  // }
 
-  useEffect(() => {
-    checkPermission();
-  }, []);
+  // useEffect(() => {
+  //   checkPermission();
+  // }, []);
 
   useEffect(() => {
     setTimeout(() => {
