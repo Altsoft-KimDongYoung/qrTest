@@ -16,10 +16,17 @@ function App() {
         console.log("permissionStatus", permissionStatus);
         // 권한 상태가 변경될 때마다 업데이트
         permissionStatus.onchange = () => {
-          const cameraStartButton = document.getElementById(
-            "html5-qrcode-button-camera-start"
+          console.log(
+            "permissionStacdajdajdajdlkajdakjdkajdadjtus",
+            permissionStatus
           );
-          cameraStartButton?.click();
+
+          setTimeout(() => {
+            const cameraStartButton = document.getElementById(
+              "html5-qrcode-button-camera-start"
+            );
+            cameraStartButton?.click();
+          }, 1000);
         };
       } catch (error) {
         console.error("권한 상태를 확인하는 데 오류가 발생했습니다:", error);
