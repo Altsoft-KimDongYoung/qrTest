@@ -3,6 +3,10 @@ import { useEffect, useRef, useState } from "react";
 
 function App() {
   const scannerRef = useRef<Html5Qrcode | null>(null);
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
   // 1. 첫 렌더링 시, qr 스캐너 실행
   useEffect(() => {
@@ -23,7 +27,7 @@ function App() {
     return () => {
       scannerRef.current?.clear();
     };
-  }, []);
+  }, [windowSize]);
 
   return <div id="reader"></div>;
 }
