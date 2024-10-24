@@ -37,6 +37,27 @@ function App() {
     checkCameraPermission();
   }, []);
 
+  function checkMediaPermissions() {
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: true })
+      .then((stream) => {
+        console.log("Camera and microphone access granted");
+        // 권한이 허용되었으면 주기적으로 권한을 요청하는 것을 멈추거나 필요한 작업을 합니다.
+        clearInterval(permissionInterval); // 주기적인 요청을 멈춥니다.
+        // 스트림 사용
+      })
+      .catch((error) => {
+        if (error.name === "NotAllowedError") {
+          console.log("Camera and microphone access denied");
+        } else {
+          console.log("Error occurred:", error.name);
+        }
+      });
+  }
+
+  // 5초(5000ms) 간격으로 권한을 요청
+  const permissionInterval = setInterval(checkMediaPermissions, 5000);
+
   async function checkPermission() {
     try {
       const permissionStatus = await navigator.permissions.query({
@@ -61,10 +82,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const cameraStartButton = document.getElementById(
-      "html5-qrcode-button-camera-permission"
-    );
-    cameraStartButton?.click();
+    setTimeout(() => {
+      const cameraStartButton = document.getElementById(
+        "html5-qrcode-button-camera-permission"
+      );
+      cameraStartButton?.click();
+    }, 1000);
 
     try {
       Html5Qrcode.getCameras()
