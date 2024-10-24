@@ -16,7 +16,14 @@ function App() {
     const qrCodeSuccessCallback = (decodedText: any, decodedResult: any) => {
       /* handle success */
     };
-    const config = { fps: 10, qrbox: 236 };
+    const config = {
+      fps: 20,
+      qrbox: (viewfinderWidth, viewfinderHeight) => {
+        // 중앙에 위치할 스캔 영역 크기 설정
+        const boxSize = Math.min(viewfinderWidth, viewfinderHeight) * 0.5;
+        return { width: boxSize, height: boxSize };
+      },
+    };
 
     // If you want to prefer front camera
     scannerRef.current.start(
