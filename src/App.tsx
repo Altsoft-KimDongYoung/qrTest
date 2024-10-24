@@ -37,6 +37,29 @@ function App() {
     checkCameraPermission();
   }, []);
 
+  async function checkPermission() {
+    try {
+      const permissionStatus = await navigator.permissions.query({
+        name: "geolocation",
+      });
+
+      const handlePermissionChange = () => {
+        console.log("Permission changed:", permissionStatus.state);
+      };
+
+      // 수동으로 상태를 주기적으로 체크하는 방식 (폴링)
+      setInterval(() => {
+        handlePermissionChange();
+      }, 3000); // 1초마다 권한 상태 확인
+    } catch (error) {
+      console.error("Permissions API is not supported in this browser.");
+    }
+  }
+
+  useEffect(() => {
+    checkPermission();
+  }, []);
+
   useEffect(() => {
     const cameraStartButton = document.getElementById(
       "html5-qrcode-button-camera-permission"
