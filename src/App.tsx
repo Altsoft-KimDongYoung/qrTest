@@ -39,7 +39,7 @@ function App() {
 
   function checkMediaPermissions() {
     navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
+      .getUserMedia({ video: true })
       .then((stream) => {
         console.log("Camera and microphone access granted");
         // 권한이 허용되었으면 주기적으로 권한을 요청하는 것을 멈추거나 필요한 작업을 합니다.
