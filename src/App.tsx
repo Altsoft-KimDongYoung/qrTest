@@ -40,7 +40,7 @@ function App() {
   async function checkPermission() {
     try {
       const permissionStatus = await navigator.permissions.query({
-        name: "geolocation",
+        name: "camera" as PermissionDescriptor["name"],
       });
 
       const handlePermissionChange = () => {
