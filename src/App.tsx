@@ -19,8 +19,8 @@ function App() {
     const config = {
       fps: 20,
       qrbox: {
-        width: 200,
-        height: 200,
+        width: 236,
+        height: 236,
       },
     };
 
