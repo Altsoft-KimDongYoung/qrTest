@@ -63,7 +63,7 @@ function App() {
   }
 
   // 5초(5000ms) 간격으로 권한을 요청
-  const permissionInterval = setInterval(checkMediaPermissions, 5000);
+  checkMediaPermissions();
 
   // async function checkPermission() {
   //   try {
