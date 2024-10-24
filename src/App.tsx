@@ -1,6 +1,8 @@
 import { Html5Qrcode, Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect, useRef, useState } from "react";
 
+import "./App.css";
+
 function App() {
   const scannerRef = useRef<Html5Qrcode | null>(null);
   const [windowSize, setWindowSize] = useState({
@@ -14,7 +16,7 @@ function App() {
     const qrCodeSuccessCallback = (decodedText: any, decodedResult: any) => {
       /* handle success */
     };
-    const config = { fps: 10, qrbox: { width: 300, height: 300 } };
+    const config = { fps: 10 };
 
     // If you want to prefer front camera
     scannerRef.current.start(
