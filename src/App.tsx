@@ -43,7 +43,6 @@ function App() {
       .then((stream) => {
         console.log("Camera and microphone access granted");
         // 권한이 허용되었으면 주기적으로 권한을 요청하는 것을 멈추거나 필요한 작업을 합니다.
-        clearInterval(permissionInterval); // 주기적인 요청을 멈춥니다.
         setTimeout(() => {
           const cameraStartButton = document.getElementById(
             "html5-qrcode-button-camera-start"
