@@ -25,8 +25,9 @@ function App() {
             const cameraStartButton = document.getElementById(
               "html5-qrcode-button-camera-start"
             );
+            console.log("cameraStartButton", cameraStartButton);
             cameraStartButton?.click();
-          }, 1000);
+          }, 3000);
         };
       } catch (error) {
         console.error("권한 상태를 확인하는 데 오류가 발생했습니다:", error);
